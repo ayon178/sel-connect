@@ -1,5 +1,6 @@
 'use client'
 
+import Service from '@/components/home/Service'
 import Navbar from '@/components/shared/Navbar'
 import MainSlider from '@/components/slider/MainSlider'
 import gsap from 'gsap'
@@ -11,11 +12,9 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      if (typeof window !== 'undefined') {
-        const authenticated = window.localStorage.getItem('isAuthenticated')
-        if (!authenticated) {
-          window.location.href = '/auth/login'
-        }
+      const authenticated = window.localStorage.getItem('isAuthenticated')
+      if (!authenticated) {
+        window.location.href = '/auth/login'
       }
 
       const navbar = document.querySelector('#navbar')
@@ -78,7 +77,7 @@ export default function Home() {
       <Navbar />
       <MainSlider />
       <main>
-        
+        <Service />
       </main>
     </>
   )

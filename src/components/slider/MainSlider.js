@@ -1,4 +1,6 @@
 // CustomSlider.js
+import { GoHomeFill } from 'react-icons/go'
+
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Pagination } from 'swiper'
 import 'swiper/css'
@@ -74,14 +76,25 @@ const MainSlider = () => {
               </div>
               <div
                 onClick={() => handleClick(index)}
-                className={`w-full md:w-1/3 p-8 flex items-start flex-col justify-center cursor-pointer absolute md:static inset-0 ${
+                className={`w-full md:w-1/3 p-8 flex items-center text-center flex-col justify-center cursor-pointer absolute md:static inset-0 ${
                   index === activeIndex ? 'md:flex' : 'hidden'
                 }`}
               >
-                <p className="text-lg">{slide.text}</p>
-                <button className="bg-primary text-white px-4 py-2 rounded-md mt-4">
-                  My Properties
+                <h1 className="text-3xl font-semibold">
+                  Be <span className="text-primary">Different.</span>
+                </h1>
+                <h1 className="text-3xl font-semibold">
+                  Choose <span className="text-primary">Differently.</span>
+                </h1>
+                <button
+                  onClick={() => (window.location.href = '/search')}
+                  className="bg-primary text-white px-10 py-2 rounded-lg mt-4 flex flex-col items-center justify-center"
+                >
+                  <GoHomeFill size={25} />
+                  <span className="text-sm">My Properties</span>
                 </button>
+
+                <small className=" mt-5">{slide.text}</small>
               </div>
             </div>
           </SwiperSlide>

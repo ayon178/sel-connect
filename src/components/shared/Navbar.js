@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BiMenuAltRight } from 'react-icons/bi'
 import MobileMenu from './MobileMenu'
 import gsap from 'gsap'
@@ -8,13 +8,26 @@ import Link from 'next/link'
 import Image from 'next/image'
 import logo from '../../assets/logo.png'
 
+import { FaUserCircle } from 'react-icons/fa'
+import { HiDotsVertical } from 'react-icons/hi'
+
 const Navbar = () => {
   const refMobile = useRef(null)
+  const [authenticated, setAuthenticated] = useState(false)
 
   useEffect(() => {
     gsap.from(refMobile.current, {
       xPercent: -100,
     })
+
+    if (typeof window !== 'undefined') {
+      const auth = window.localStorage.getItem('isAuthenticated')
+      if (!auth) {
+        window.location.href = '/auth/login'
+      } else {
+        setAuthenticated(true)
+      }
+    }
   }, [])
 
   const openMenu = () => {
@@ -131,10 +144,20 @@ const Navbar = () => {
               Interior Design
             </Link>
           </li>
+          {authenticated ? (
+            <li>
+              <FaUserCircle size={25} className="cursor-pointer" />
+            </li>
+          ) : (
+            <li>
+              <button className="bg-white text-primary px-3 py-2 rounded-md register_button ">
+                Login
+              </button>
+            </li>
+          )}
+
           <li>
-            <button className="bg-white text-primary px-3 py-2 rounded-md register_button">
-              Register
-            </button>
+            <HiDotsVertical size={25} className="cursor-pointer" s />
           </li>
         </ul>
         <BiMenuAltRight
