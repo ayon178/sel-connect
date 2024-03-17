@@ -15,6 +15,7 @@ export default function Home() {
       const authenticated = window.localStorage.getItem('isAuthenticated')
       if (!authenticated) {
         window.location.href = '/auth/login'
+        return
       }
 
       const navbar = document.querySelector('#navbar')

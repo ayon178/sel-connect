@@ -1,9 +1,9 @@
 'use client'
 
-import CustomFeed from '@/components/feedback/CustomFeed'
 import React, { useEffect, useState } from 'react'
 import gsap from 'gsap'
 import Navbar from '@/components/shared/Navbar'
+import CustomFeed from '@/components/feedback/CustomFeed'
 
 const CustomFeedback = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -11,11 +11,10 @@ const CustomFeedback = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      if (typeof window !== 'undefined') {
-        const authenticated = window.localStorage.getItem('isAuthenticated')
-        if (!authenticated) {
-          window.location.href = '/auth/login'
-        }
+      const authenticated = window.localStorage.getItem('isAuthenticated')
+      if (!authenticated) {
+        window.location.href = '/auth/login'
+        return
       }
 
       const navbar = document.querySelector('#navbar')
@@ -76,7 +75,7 @@ const CustomFeedback = () => {
   return (
     <>
       <Navbar />
-      <CustomFeed />
+      {/* <CustomFeed /> */}
     </>
   )
 }

@@ -24,6 +24,7 @@ const Navbar = () => {
       const auth = window.localStorage.getItem('isAuthenticated')
       if (!auth) {
         window.location.href = '/auth/login'
+        return
       } else {
         setAuthenticated(true)
       }

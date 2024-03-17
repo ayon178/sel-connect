@@ -2,18 +2,16 @@ import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { FaFileUpload } from 'react-icons/fa'
 import CustomHeading from '../shared/CustomHeading'
-
 import commonImage from '../../assets/common-side.PNG'
 
 const CustomFeed = () => {
   const [images, setImages] = useState([])
 
   const onDrop = useCallback(acceptedFiles => {
-    const newImages = acceptedFiles.map(file =>
-      Object.assign(file, {
-        preview: URL.createObjectURL(file),
-      })
-    )
+    const newImages = acceptedFiles.map(file => ({
+      ...file,
+      preview: URL.createObjectURL(file),
+    }))
 
     setImages(prevImages => [...prevImages, ...newImages])
   }, [])
@@ -40,7 +38,6 @@ const CustomFeed = () => {
               images.length > 0 ? '' : 'justify-center'
             }`}
           >
-            {/* Left side (for dragging and dropping files) */}
             <div
               {...getRootProps()}
               className={`border-2 border-dashed rounded-lg p-8 mt-8 mb-4 md:mb-0 md:mr-4 md:w-96 h-72 ${
@@ -58,15 +55,20 @@ const CustomFeed = () => {
                 </button>
               </div>
             </div>
-
-            {/* Right side (for displaying preview images) */}
             {images.length > 0 && (
               <div className="flex flex-wrap mt-6">
-                <ImagePreview images={images} />
+                {images.map((image, index) => (
+                  <div key={index} className="m-2">
+                    <img
+                      src={image.preview}
+                      alt={`preview-${index}`}
+                      className="max-w-full max-h-32 object-cover"
+                    />
+                  </div>
+                ))}
               </div>
             )}
           </div>
-
           <div className="w-full mx-auto">
             <form className="flex w-full flex-col items-center justify-center mt-10">
               <div className="grid gap-3 md:grid-cols-2 w-full">
@@ -76,7 +78,6 @@ const CustomFeed = () => {
                     className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary outline-none block w-full p-2.5"
                     placeholder="Tiles (Bath & Kitchen)"
                     name="eventTitle"
-                    // value={'Tiles (Bath & Kitchen)'}
                   />
                 </div>
               </div>
@@ -87,7 +88,6 @@ const CustomFeed = () => {
                   placeholder="Description"
                 />
               </div>
-
               <div className="flex mt-3 justify-center w-full md:col-span-2">
                 <button className="px-10 w-72 py-2.5 rounded-3xl bg-primary text-white text-sm font-medium">
                   Send Feedback
@@ -96,7 +96,6 @@ const CustomFeed = () => {
             </form>
           </div>
         </div>
-
         <div className="max-w-[30rem]">
           <img src={commonImage.src} className="w-full" alt="" />
         </div>
@@ -106,19 +105,3 @@ const CustomFeed = () => {
 }
 
 export default CustomFeed
-
-const ImagePreview = ({ images }) => {
-  return (
-    <>
-      {images.map((image, index) => (
-        <div key={index} className="m-2">
-          <img
-            src={image.preview}
-            alt={`preview-${index}`}
-            className="max-w-full max-h-32 object-cover"
-          />
-        </div>
-      ))}
-    </>
-  )
-}
