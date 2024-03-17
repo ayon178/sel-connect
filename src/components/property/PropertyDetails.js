@@ -135,6 +135,7 @@ const PropertyDetails = () => {
             <div className="mt-5 grid grid-cols-4 gap-5">
               {data.map((item, index) => (
                 <div
+                  onClick={() => (window.location.href = '/feedback')}
                   style={{
                     boxShadow: '1px 2px 8px rgba(0, 0, 0, 0.4)',
                   }}
@@ -149,7 +150,10 @@ const PropertyDetails = () => {
               ))}
             </div>
 
-            <button className="bg-primary text-white px-5 py-2 rounded-lg w-full mt-10">
+            <button
+              onClick={() => (window.location.href = '/feedback')}
+              className="bg-primary text-white px-5 py-2 rounded-lg w-full mt-10"
+            >
               Feedback History
             </button>
           </div>
