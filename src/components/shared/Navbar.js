@@ -82,13 +82,16 @@ const Navbar = () => {
           </h1>
           <h1 className="inline-block text-[.6rem] font-extrabold">Hospital</h1>
         </div> */}
-          <Image
+          {/* <Image
             src={logo}
             alt="Royal Melbourne Hospital"
             width={40}
             height={40}
             className="py-1"
-          />
+          /> */}
+          <h1 className="text-2xl text_color text-secondaryText py-1 font-semibold">
+            SEL Connect
+          </h1>
         </Link>
         <ul className="flex-row items-center gap-9 text-sm font-semibold text_color text-secondaryText hidden md:flex">
           <li>
