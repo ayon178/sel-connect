@@ -1,26 +1,32 @@
 import { useCallback, useState } from 'react'
-import { useDropzone } from 'react-dropzone'
 import { FaFileUpload } from 'react-icons/fa'
 import CustomHeading from '../shared/CustomHeading'
 import commonImage from '../../assets/common-side.PNG'
+import 'react-dropzone-uploader/dist/styles.css' // Import styles from the library
+import Dropzone from 'react-dropzone-uploader'
 
 const CustomFeed = () => {
   const [images, setImages] = useState([])
+  const [imageToUpload, setImageToUpload] = useState(null)
 
-  const onDrop = useCallback(acceptedFiles => {
-    const newImages = acceptedFiles.map(file => ({
-      ...file,
-      preview: URL.createObjectURL(file),
-    }))
+  const handleChangeStatus = ({ meta = {}, file }, status) => {
+    if (status === 'done') {
+      const newImages = {
+        ...file,
+        preview: URL.createObjectURL(file),
+        meta,
+      }
+      setImages(prevImages => [...prevImages, newImages])
 
-    setImages(prevImages => [...prevImages, ...newImages])
-  }, [])
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: 'image/*',
-    multiple: true,
-  })
+      // setImageToUpload(file)
+    }
+    if (status === 'removed') {
+      const remainingImages = images.filter(
+        image => image.meta && image.meta.id !== meta.id
+      )
+      setImages(remainingImages)
+    }
+  }
 
   return (
     <div className="container mx-auto my-20">
@@ -33,30 +39,38 @@ const CustomFeed = () => {
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Voluptates, aspernatur.
           </p>
-          <div
-            className={`flex max-w-[900px] mx-auto mt-5 flex-col md:flex-row items-center md:items-start ${
-              images.length > 0 ? '' : 'justify-center'
-            }`}
-          >
-            <div
-              {...getRootProps()}
-              className={`border-2 border-dashed rounded-lg p-8 mt-8 mb-4 md:mb-0 md:mr-4 md:w-96 h-72 ${
-                isDragActive ? 'border-blue-900' : 'border-gray-500'
-              }`}
-            >
-              <input {...getInputProps()} />
-              <div className="flex flex-col items-center justify-center h-full">
-                <FaFileUpload className="text-4xl mb-2 text-gray-500" />
-                <p className="text-gray-700 text-sm shadow-primary text-center font-semibold">
-                  Drag and drop files <br /> or, <br />
-                </p>
-                <button className="bg-red-200 px-4 py-1 font-semibold mt-2 rounded-lg text-primary">
-                  Browse Files
-                </button>
-              </div>
-            </div>
+          <div className="flex max-w-[900px] mx-auto mt-5 flex-col md:flex-row items-center md:items-start">
+            <Dropzone
+              onChangeStatus={handleChangeStatus}
+              accept="image/*"
+              multiple
+              styles={{
+                dropzone: {
+                  border: '2px dashed',
+                  borderRadius: '8px',
+                  padding: '8rem',
+                  marginTop: '1rem',
+                  marginBottom: '2rem',
+                  width: '24rem',
+                  maxHeight: '18rem',
+                },
+                dropzoneActive: {
+                  borderColor: '#3182ce',
+                },
+                submitButton: {
+                  backgroundColor: '#f56565',
+                  color: 'white',
+                  padding: '0.5rem 2rem',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  fontSize: '1rem',
+                  fontWeight: 'bold',
+                  marginTop: '2rem',
+                },
+              }}
+            />
             {images.length > 0 && (
-              <div className="flex flex-wrap mt-6">
+              <div className="flex flex-wrap mt-6 ml-5">
                 {images.map((image, index) => (
                   <div key={index} className="m-2">
                     <img

@@ -75,7 +75,7 @@ const CustomFeedback = () => {
   return (
     <>
       <Navbar />
-      {/* <CustomFeed /> */}
+      <CustomFeed />
     </>
   )
 }
