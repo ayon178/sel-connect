@@ -58,7 +58,7 @@ const ServiceCard = ({ service }) => {
   return (
     <div
       style={{
-        boxShadow: '1px 2px 10px rgba(0, 0, 0, 0.4)',
+        boxShadow: '1px 2px 10px rgba(0, 0, 0, 0.2)',
       }}
       className="rounded-md w-72 p-2 pb-5"
     >

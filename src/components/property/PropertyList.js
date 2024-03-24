@@ -64,15 +64,15 @@ const PropertyCard = ({ property }) => {
       onClick={() => (window.location.href = '/search/details')}
       style={{
         boxShadow:
-          '0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.2)',
+          '0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)',
       }}
-      className=" rounded-md  p-3"
+      className=" rounded-2xl  p-3"
     >
       <div className="flex gap-4 items-center">
-        <div className="rounded-md overflow-hidden">
-          <img src={property.image} alt="" className="w-full h-36" />
+        <div className="rounded-md  w-1/3 h-full overflow-hidden">
+          <img src={property.image} alt="" className="w-full h-full" />
         </div>
-        <div className="flex flex-col gap-2 mt-2">
+        <div className="flex flex-col w-2/3 gap-2 mt-2">
           <h1 className="text-lg text-primary font-semibold">
             {property.title}
           </h1>
@@ -81,17 +81,18 @@ const PropertyCard = ({ property }) => {
 
           <p className="text-sm text-gray-600">Level: {property.level}</p>
           <p className="text-sm text-gray-600">Unit: {property.unit}</p>
+
+          <div className="w-full flex gap-4 items-center">
+            <button className="bg-red-100 font-semibold text-sm w-1/2 px-4 py-2 rounded-md flex items-center justify-between">
+              <span>Commercial Space</span>{' '}
+              <MdHomeWork className="inline-block text-primary text-xl" />
+            </button>
+            <button className="bg-yellow-100 font-semibold text-sm w-1/2 px-4 py-2 rounded-md flex items-center justify-between">
+              <span>Company Owner</span>{' '}
+              <MdHomeWork className="inline-block text-primary text-xl" />
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="w-full flex gap-4 items-center mt-4">
-        <button className="bg-red-100 font-semibold text-sm w-1/2 px-4 py-2 rounded-md flex items-center justify-between">
-          <span>Commercial Space</span>{' '}
-          <MdHomeWork className="inline-block text-primary text-xl" />
-        </button>
-        <button className="bg-yellow-100 font-semibold text-sm w-1/2 px-4 py-2 rounded-md flex items-center justify-between">
-          <span>Company Owner</span>{' '}
-          <MdHomeWork className="inline-block text-primary text-xl" />
-        </button>
       </div>
     </div>
   )
