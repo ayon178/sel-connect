@@ -73,7 +73,13 @@ const FeedbackViewComponent = () => {
                 value={selectedRating}
                 activeColor="#732318"
               />
-              <h1>{formData.rating}</h1>
+              <textarea
+                className="w-full h-24 mt-5 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-200"
+                placeholder="Write your feedback here..."
+              />
+              <button className="bg-primary text-white w-full py-2 mt-5 rounded-2xl">
+                Submit Review
+              </button>
             </div>
           </div>
         </div>
