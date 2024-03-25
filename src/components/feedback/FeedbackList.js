@@ -1,18 +1,18 @@
 import React from 'react'
-import commonImage from '../../assets/common-side.PNG'
 import CustomHeading from '../shared/CustomHeading'
+import commonImage from '../../assets/common-side.PNG'
 import { useRouter } from 'next/navigation'
 
 import { FiClock } from 'react-icons/fi'
 import { SlCalender } from 'react-icons/sl'
 
-const Notification = () => {
+const FeedbackList = () => {
   const router = useRouter()
   return (
     <div className="container mx-auto my-20">
       <div className="flex justify-between gap-10">
         <div className="w-[55rem]">
-          <CustomHeading firstText="Notifications" />
+          <CustomHeading firstText="My Feedback" />
 
           <p className="text-gray-500 mt-2 text-sm ">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -26,9 +26,9 @@ const Notification = () => {
                 .map((_, i) => (
                   <div
                     key={i}
-                    onClick={() => router.push(`/notification/${i + 1}`)}
+                    onClick={() => router.push(`/feedback/${i + 1}`)}
                   >
-                    <NotificationCard />
+                    <FeedbackCard />
                   </div>
                 ))}
             </div>
@@ -43,7 +43,7 @@ const Notification = () => {
   )
 }
 
-const NotificationCard = ({ notification }) => {
+const FeedbackCard = ({ feedback }) => {
   return (
     <div
       style={{
@@ -51,7 +51,17 @@ const NotificationCard = ({ notification }) => {
       }}
       className=" bg-white px-7 py-4 rounded-2xl cursor-pointer"
     >
-      <h1 className="text-slate-800 text-lg font-semibold">Admin replied</h1>
+      <h1 className="text-slate-800 text-lg font-semibold">Dock Frame</h1>
+      <div className="mt-1 flex">
+        <div className="flex items-center mr-16">
+          <SlCalender className="inline-block mr-2 text-md text-primary" />
+          <span className="text-primary font-semibold text-sm">21/01/2024</span>
+        </div>
+        <div className="flex items-center">
+          <FiClock className="inline-block mr-2 text-lg text-primary" />
+          <span className="text-primary font-semibold text-sm">3:30 PM</span>
+        </div>
+      </div>
       <p className="text-sm text-gray-700 mt-2 text-justify">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur
         possimus voluptate sapiente vero accusantium excepturi nobis. Tenetur
@@ -61,25 +71,13 @@ const NotificationCard = ({ notification }) => {
         voluptates nihil quisquam necessitatibus fugiat dolor.
       </p>
 
-      <div className="flex items-center justify-between">
-        <div className="mt-5 flex">
-          <div className="flex items-center mr-16">
-            <SlCalender className="inline-block mr-2 text-xl text-primary" />
-            <span className="text-primary font-semibold text-lg">
-              21/01/2024
-            </span>
-          </div>
-          <div className="flex items-center">
-            <FiClock className="inline-block mr-2 text-xl text-primary" />
-            <span className="text-primary font-semibold text-lg">3:30 PM</span>
-          </div>
-        </div>
-        <button className="bg-red-200 text-primary rounded-3xl px-5 py-1">
-          Account
+      <div className="flex items-center justify-end">
+        <button className="bg-red-200 text-primary rounded-xl text-sm px-5 py-1">
+          Admin Replied
         </button>
       </div>
     </div>
   )
 }
 
-export default Notification
+export default FeedbackList
