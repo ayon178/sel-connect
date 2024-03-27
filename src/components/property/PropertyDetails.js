@@ -6,27 +6,33 @@ import { RiBuilding2Line } from 'react-icons/ri'
 import { GiTakeMyMoney } from 'react-icons/gi'
 import { FaCoins } from 'react-icons/fa'
 import { TiHome } from 'react-icons/ti'
+import { useRouter } from 'next/navigation'
 
 const data = [
   {
     title: 'Construction',
     icon: <RiBuilding2Line size={40} />,
+    link: '/feedback/construction',
   },
   {
     title: 'After Sales',
     icon: <GiTakeMyMoney size={40} />,
+    link: '/feedback/after-sales',
   },
   {
     title: 'Payment',
     icon: <FaCoins size={40} />,
+    link: '/feedback/payment',
   },
   {
     title: 'Interior',
     icon: <TiHome size={40} />,
+    link: '/feedback/interior',
   },
 ]
 
 const PropertyDetails = () => {
+  const router = useRouter()
   return (
     <div className="container mx-auto my-10">
       <div className="flex justify-between gap-10">
@@ -131,14 +137,12 @@ const PropertyDetails = () => {
             <div className="mt-3 grid grid-cols-4 gap-5">
               {data.map((item, index) => (
                 <div
-                  onClick={() =>
-                    (window.location.href = '/feedback/custom-feedback')
-                  }
+                  onClick={() => router.push('/feedback/construction')}
                   style={{
                     boxShadow: '1px 2px 8px rgba(0, 0, 0, 0.2)',
                   }}
                   key={index}
-                  className="flex flex-col items-center gap-4 mt-5 p-5 rounded-xl"
+                  className="flex flex-col items-center gap-4 mt-5 p-5 rounded-xl cursor-pointer"
                 >
                   <div className=" text-primary p-3 rounded-md">
                     {item.icon}
@@ -149,7 +153,7 @@ const PropertyDetails = () => {
             </div>
 
             <button
-              onClick={() => (window.location.href = '/feedback')}
+              onClick={() => router.push('/feedback')}
               className="bg-primary text-white px-5 py-2 rounded-lg w-full mt-10"
             >
               Feedback History
