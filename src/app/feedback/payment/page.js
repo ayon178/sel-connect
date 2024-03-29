@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react'
 import gsap from 'gsap'
 import Navbar from '@/components/shared/Navbar'
-import FeedbackList from '@/components/feedback/FeedbackList'
+import PaymentFeedback from '@/components/feedback/payment/PaymentFeedback'
 
-const Feedback = () => {
+const Payment = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [loadingStartTime, setLoadingStartTime] = useState(0)
 
@@ -75,9 +75,9 @@ const Feedback = () => {
   return (
     <>
       <Navbar />
-      <FeedbackList />
+      <PaymentFeedback />
     </>
   )
 }
 
-export default Feedback
+export default Payment

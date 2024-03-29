@@ -26,7 +26,9 @@ const FeedbackList = () => {
                 .map((_, i) => (
                   <div
                     key={i}
-                    onClick={() => router.push(`/feedback/${i + 1}`)}
+                    onClick={() =>
+                      router.push(`/feedback/feedback-details/${i + 1}`)
+                    }
                   >
                     <FeedbackCard />
                   </div>
