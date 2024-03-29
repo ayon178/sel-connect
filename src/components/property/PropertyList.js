@@ -4,6 +4,7 @@ import { MdHomeWork } from 'react-icons/md'
 
 import commonImage from '../../assets/common-side.PNG'
 import CustomHeading from '../shared/CustomHeading'
+import { useRouter } from 'next/navigation'
 
 const img =
   'https://img.freepik.com/free-photo/luxury-pool-villa-spectacular-contemporary-design-digital-art-real-estate-home-house-property-ge_1258-150749.jpg?w=740&t=st=1704012228~exp=1704012828~hmac=2d11dad894f5a971aa326103a462df14764112186057effe8190effe8855859e'
@@ -15,6 +16,7 @@ const propertiesData = [
     level: '1',
     unit: '1A',
     area: 'Dhanmondi',
+    propertyId: 1,
   },
   {
     image: img,
@@ -23,6 +25,7 @@ const propertiesData = [
     level: '1',
     unit: '1A',
     area: 'Dhanmondi',
+    propertyId: 2,
   },
   {
     image: img,
@@ -31,10 +34,12 @@ const propertiesData = [
     level: '1',
     unit: '1A',
     area: 'Dhanmondi',
+    propertyId: 3,
   },
 ]
 
 const PropertyList = () => {
+  const router = useRouter()
   return (
     <div className="container mx-auto my-10">
       <CustomHeading firstText="My Properties" />
@@ -46,7 +51,12 @@ const PropertyList = () => {
         <div className="w-[55rem]">
           <div className="grid grid-cols-1 gap-4">
             {propertiesData.map((property, index) => (
-              <PropertyCard property={property} key={index} />
+              <div
+                key={index}
+                onClick={() => router.push(`/search/details/${index}`)}
+              >
+                <PropertyCard property={property} />
+              </div>
             ))}
           </div>
         </div>
@@ -61,7 +71,6 @@ const PropertyList = () => {
 const PropertyCard = ({ property }) => {
   return (
     <div
-      onClick={() => (window.location.href = '/search/details')}
       style={{
         boxShadow:
           '0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)',
