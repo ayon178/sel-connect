@@ -1,11 +1,11 @@
 import { useCallback, useState } from 'react'
 import { FaFileUpload } from 'react-icons/fa'
-import CustomHeading from '../shared/CustomHeading'
-import commonImage from '../../assets/common-side.PNG'
+import commonImage from '../../../../assets/common-side.PNG'
 import 'react-dropzone-uploader/dist/styles.css' // Import styles from the library
 import Dropzone from 'react-dropzone-uploader'
+import CustomHeading from '@/components/shared/CustomHeading'
 
-const CustomFeed = ({ page }) => {
+const GeneralFeed = () => {
   const [images, setImages] = useState([])
   const [imageToUpload, setImageToUpload] = useState(null)
 
@@ -33,7 +33,7 @@ const CustomFeed = ({ page }) => {
       <div className="flex justify-between gap-10">
         <div className="w-[55rem]">
           <div className="flex justify-center">
-            <CustomHeading firstText="Construction Custom Feedback" />
+            <CustomHeading firstText="After Sales Custom Feedback" />
           </div>
           <p className="text-gray-500 mt-2 text-sm text-center">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -118,4 +118,4 @@ const CustomFeed = ({ page }) => {
   )
 }
 
-export default CustomFeed
+export default GeneralFeed

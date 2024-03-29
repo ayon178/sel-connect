@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react'
 import gsap from 'gsap'
 import Navbar from '@/components/shared/Navbar'
-import CustomFeed from '@/components/feedback/CustomFeed'
+import AfterSalesFeedback from '@/components/feedback/afterSales/AfterSalesFeedback'
 
-const CustomFeedback = () => {
+const AfterSales = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [loadingStartTime, setLoadingStartTime] = useState(0)
 
@@ -75,9 +75,9 @@ const CustomFeedback = () => {
   return (
     <>
       <Navbar />
-      <CustomFeed page="construction"/>
+      <AfterSalesFeedback />
     </>
   )
 }
 
-export default CustomFeedback
+export default AfterSales

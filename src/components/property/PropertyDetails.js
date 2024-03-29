@@ -137,7 +137,7 @@ const PropertyDetails = () => {
             <div className="mt-3 grid grid-cols-4 gap-5">
               {data.map((item, index) => (
                 <div
-                  onClick={() => router.push('/feedback/construction')}
+                  onClick={() => router.push(item.link)}
                   style={{
                     boxShadow: '1px 2px 8px rgba(0, 0, 0, 0.2)',
                   }}
