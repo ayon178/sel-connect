@@ -62,7 +62,14 @@ const PreviousProjectComponent = () => {
             <div className="max-w-[50rem] mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {services.map((service, index) => (
-                  <ServiceCard service={service} key={index} />
+                  <div
+                    key={index}
+                    onClick={() =>
+                      router.push(`/previous-project/${index + 1}`)
+                    }
+                  >
+                    <ServiceCard service={service} />
+                  </div>
                 ))}
               </div>
             </div>

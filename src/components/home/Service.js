@@ -1,28 +1,32 @@
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
+const img =
+  'https://img.freepik.com/free-photo/luxury-pool-villa-spectacular-contemporary-design-digital-art-real-estate-home-house-property-ge_1258-150749.jpg?w=740&t=st=1704012228~exp=1704012828~hmac=2d11dad894f5a971aa326103a462df14764112186057effe8190effe8855859e'
+const services = [
+  {
+    image: img,
+    title: 'Interior Design',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
+  },
+  {
+    image: img,
+    title: 'Interior Design',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
+  },
+  {
+    image: img,
+    title: 'Interior Design',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
+  },
+]
+
 const Service = () => {
-  const img =
-    'https://img.freepik.com/free-photo/luxury-pool-villa-spectacular-contemporary-design-digital-art-real-estate-home-house-property-ge_1258-150749.jpg?w=740&t=st=1704012228~exp=1704012828~hmac=2d11dad894f5a971aa326103a462df14764112186057effe8190effe8855859e'
-  const services = [
-    {
-      image: img,
-      title: 'Interior Design',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-    },
-    {
-      image: img,
-      title: 'Interior Design',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-    },
-    {
-      image: img,
-      title: 'Interior Design',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-    },
-  ]
+  const router = useRouter()
+
   return (
     <div className="container mx-auto my-20">
       {/* Text header */}
@@ -45,6 +49,14 @@ const Service = () => {
           {services.map((service, index) => (
             <ServiceCard service={service} key={index} />
           ))}
+        </div>
+        <div className="flex justify-end mr-5">
+          <button
+            className="bg-primary text-white mt-5 py-2 px-4 rounded-md"
+            onClick={() => router.push('/previous-project')}
+          >
+            Previous Project
+          </button>
         </div>
       </div>
     </div>
