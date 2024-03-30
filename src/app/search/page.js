@@ -1,20 +1,20 @@
 'use client'
 
-import PropertyList from '@/components/property/PropertyList'
+import SearchComponent from '@/components/search/SearchComponent'
 import Navbar from '@/components/shared/Navbar'
 import gsap from 'gsap'
 import React, { useEffect, useState } from 'react'
 
-const MyProperty = () => {
+const Search = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [loadingStartTime, setLoadingStartTime] = useState(0)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        const authenticated = window.localStorage.getItem('isAuthenticated')
-        if (!authenticated) {
-          window.location.href = '/auth/login'
-          return
+      const authenticated = window.localStorage.getItem('isAuthenticated')
+      if (!authenticated) {
+        window.location.href = '/auth/login'
+        return
       }
 
       const navbar = document.querySelector('#navbar')
@@ -75,9 +75,9 @@ const MyProperty = () => {
   return (
     <>
       <Navbar />
-      <PropertyList />
+      <SearchComponent />
     </>
   )
 }
 
-export default MyProperty
+export default Search
