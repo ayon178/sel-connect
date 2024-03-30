@@ -53,7 +53,8 @@ const PropertyList = () => {
             {propertiesData.map((property, index) => (
               <div
                 key={index}
-                onClick={() => router.push(`/search/details/${index}`)}
+                onClick={() => router.push(`/my-property/details/${index}`)}
+                className="cursor-pointer"
               >
                 <PropertyCard property={property} />
               </div>

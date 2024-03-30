@@ -8,6 +8,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/effect-fade' // Add this import if you want to use the fade effect
 // import mainImage from '../../assets/main_slider.jpg'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 SwiperCore.use([Pagination])
 
@@ -32,6 +33,7 @@ const slides = [
 const MainSlider = () => {
   const [swiper, setSwiper] = useState(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const router = useRouter()
 
   const handleClick = index => {
     if (swiper && swiper.slideTo) {
@@ -87,7 +89,7 @@ const MainSlider = () => {
                   Choose <span className="text-primary">Differently.</span>
                 </h1>
                 <button
-                  onClick={() => (window.location.href = '/search')}
+                  onClick={() => router.push('/my-property')}
                   className="bg-primary text-white px-10 py-2 rounded-lg mt-4 flex flex-col items-center justify-center"
                 >
                   <GoHomeFill size={25} />
