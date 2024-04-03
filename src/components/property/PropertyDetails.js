@@ -8,6 +8,9 @@ import { FaCoins } from 'react-icons/fa'
 import { TiHome } from 'react-icons/ti'
 import { useRouter } from 'next/navigation'
 
+import green from '../../assets/my_property/SEL_GREEN_ACRES.png'
+import ashabori from '../../assets/my_property/SEL_Ashabori.png'
+
 const data = [
   {
     title: 'Construction',
@@ -31,7 +34,7 @@ const data = [
   },
 ]
 
-const PropertyDetails = () => {
+const PropertyDetails = ({ id }) => {
   const router = useRouter()
   return (
     <div className="container mx-auto my-10">
@@ -47,11 +50,13 @@ const PropertyDetails = () => {
               </button>
             </div>
 
-            <img
-              src="https://img.freepik.com/free-psd/modern-farmhouse-meadow-hill-generative-ai_587448-2243.jpg?w=996&t=st=1705758284~exp=1705758884~hmac=bd04a7ac7bd80196fc172606a27c387178e06d677ec62de5fb59de5b62839b0c"
-              alt=""
-              className="w-full rounded-lg"
-            />
+            <div className="w-full bg-gray-300 py-2 flex items-center overflow-hidden justify-center rounded-lg">
+              <img
+                src={id == 0 ? green.src : ashabori.src}
+                alt=""
+                className="w-60 rounded-lg"
+              />
+            </div>
 
             <div className="mt-10">
               <div className="mt-5 overflow-x-auto">

@@ -6,7 +6,9 @@ import SwiperCore, { Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/effect-fade' // Add this import if you want to use the fade effect
-// import mainImage from '../../assets/main_slider.jpg'
+import sliderOne from '../../assets/slider/Slider1.jpg'
+import sliderTwo from '../../assets/slider/Slider12.jpg'
+import sliderThree from '../../assets/slider/Slider13.jpg'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
@@ -14,18 +16,15 @@ SwiperCore.use([Pagination])
 
 const slides = [
   {
-    image:
-      'https://img.freepik.com/free-photo/modern-luxury-domestic-room-comfortable-relaxation-generative-ai_188544-12679.jpg?w=826&t=st=1703757257~exp=1703757857~hmac=5f4d70dcd27ac71eee72e3f3e978633ec91e970edfae34df4ba67b9bfca08f19',
+    image: sliderOne,
     text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
   {
-    image:
-      'https://img.freepik.com/free-photo/luxury-house-real-estate-sale-property-generative-ai_169016-29360.jpg?w=826&t=st=1703757009~exp=1703757609~hmac=2b47a6e3d2b264cbc517cecc4299974ca5183b8ee0d4d6893441c116e3985ad0',
+    image: sliderTwo,
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
-    image:
-      'https://img.freepik.com/free-photo/office-buildings_1127-3158.jpg?w=740&t=st=1703757400~exp=1703758000~hmac=5af38f0edb48ccf6879aca6cf28a0b21ca5f094aed9ab205f0ccb4a7f831c542',
+    image: sliderThree,
     text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
   },
 ]
@@ -71,7 +70,7 @@ const MainSlider = () => {
             <div className="md:flex items-center relative h-full">
               <div className="w-full md:w-2/3 h-full">
                 <img
-                  src={slide.image}
+                  src={slide.image.src}
                   alt={`Slide ${index + 1}`}
                   className="w-full h-full object-cover"
                 />

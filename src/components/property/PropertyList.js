@@ -5,36 +5,27 @@ import { MdHomeWork } from 'react-icons/md'
 import commonImage from '../../assets/common-side.PNG'
 import CustomHeading from '../shared/CustomHeading'
 import { useRouter } from 'next/navigation'
+import green from '../../assets/my_property/SEL_GREEN_ACRES.png'
+import ashabori from '../../assets/my_property/SEL_Ashabori.png'
 
-const img =
-  'https://img.freepik.com/free-photo/luxury-pool-villa-spectacular-contemporary-design-digital-art-real-estate-home-house-property-ge_1258-150749.jpg?w=740&t=st=1704012228~exp=1704012828~hmac=2d11dad894f5a971aa326103a462df14764112186057effe8190effe8855859e'
 const propertiesData = [
   {
-    image: img,
-    title: 'SEL Miraj',
-    address: 'Azimpur Road',
-    level: '1',
-    unit: '1A',
-    area: 'Dhanmondi',
+    image: green,
+    title: 'SEL GREEN ACRES',
+    address: 'Plot-89/2, Road-12/A, Dhanmondi, Dhaka',
+    type: 'Residential',
+    floor: '8 storied building',
+    flatPerFloor: '2',
     propertyId: 1,
   },
   {
-    image: img,
-    title: 'SEL Miraj',
-    address: 'Azimpur Road',
-    level: '1',
-    unit: '1A',
-    area: 'Dhanmondi',
+    image: ashabori,
+    title: 'SEL ASHABORI',
+    address: 'Plot-13, Road-07, Sector-04, Uttara, Dhaka',
+    type: 'Residential',
+    floor: '10 ',
+    flatPerFloor: '2',
     propertyId: 2,
-  },
-  {
-    image: img,
-    title: 'SEL Miraj',
-    address: 'Azimpur Road',
-    level: '1',
-    unit: '1A',
-    area: 'Dhanmondi',
-    propertyId: 3,
   },
 ]
 
@@ -79,18 +70,24 @@ const PropertyCard = ({ property }) => {
       className=" rounded-2xl  p-3"
     >
       <div className="flex gap-4 items-center">
-        <div className="rounded-md  w-1/3 h-full overflow-hidden">
-          <img src={property.image} alt="" className="w-full h-full" />
+        <div className="rounded-md bg-gray-300 py-2 h-full w-1/3 flex items-center justify-center overflow-hidden">
+          <img src={property.image.src} alt="" className="w-auto h-52 rounded-md" />
         </div>
         <div className="flex flex-col w-2/3 gap-2 mt-2">
           <h1 className="text-lg text-primary font-semibold">
             {property.title}
           </h1>
           <p className="text-sm text-gray-600">Address: {property.address}</p>
-          <p className="text-sm text-gray-600">Area: {property.area}</p>
 
-          <p className="text-sm text-gray-600">Level: {property.level}</p>
-          <p className="text-sm text-gray-600">Unit: {property.unit}</p>
+          <p className="text-sm text-gray-600">
+            Property Type: {property.type}
+          </p>
+          <p className="text-sm text-gray-600">
+            Number of Floor: {property.floor}
+          </p>
+          <p className="text-sm text-gray-600">
+            Flats Per Floor: {property.flatPerFloor}
+          </p>
 
           <div className="w-full flex gap-4 items-center">
             <button className="bg-red-100 font-semibold text-sm w-1/2 px-4 py-2 rounded-md flex items-center justify-between">
