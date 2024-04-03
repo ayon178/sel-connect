@@ -114,7 +114,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              href="/interior-offer"
+              href="/offer"
               onMouseEnter={handleMenuItemHover}
               onMouseLeave={handleMenuItemLeave}
             >

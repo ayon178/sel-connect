@@ -10,8 +10,8 @@ const OfferComponent = () => {
       <div className="flex justify-between gap-10">
         <div className="w-[55rem]">
           <div className="flex flex-col items-center justify-start">
-            <CustomHeading firstText={'After Sales'} />
-            <p className="text-sm mb-8">
+            <CustomHeading firstText={'Offers'} />
+            <p className="text-sm text-slate-500 mb-14">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
               doloribus magni voluptatum
             </p>
