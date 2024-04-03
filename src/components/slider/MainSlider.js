@@ -92,8 +92,8 @@ const MainSlider = () => {
                   onClick={() => router.push('/my-property')}
                   className="bg-primary text-white px-10 py-2 rounded-lg mt-4 flex flex-col items-center justify-center"
                 >
-                  <GoHomeFill size={25} />
-                  <span className="text-sm">My Properties</span>
+                  <GoHomeFill size={35} />
+                  <span className="text-lg">My Properties</span>
                 </button>
 
                 <small className=" mt-5">{slide.text}</small>

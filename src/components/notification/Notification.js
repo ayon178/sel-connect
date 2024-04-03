@@ -55,23 +55,20 @@ const NotificationCard = ({ notification }) => {
       <p className="text-sm text-gray-700 mt-2 text-justify">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur
         possimus voluptate sapiente vero accusantium excepturi nobis. Tenetur
-        provident dolorem dolorum, sit, delectus nemo iste officia, inventore
-        consequatur cumque rem numquam voluptates alias. Dolores asperiores
-        doloremque aut culpa sequi excepturi ipsam quas tempora impedit? Autem
-        voluptates nihil quisquam necessitatibus fugiat dolor.
+        provident dolorem dolorum, sit, delectus nemo iste officia
       </p>
 
       <div className="flex items-center justify-between">
         <div className="mt-5 flex">
           <div className="flex items-center mr-16">
-            <SlCalender className="inline-block mr-2 text-xl text-primary" />
-            <span className="text-primary font-semibold text-lg">
+            <SlCalender className="inline-block mr-2 text-md text-primary" />
+            <span className="text-primary font-semibold text-sm">
               21/01/2024
             </span>
           </div>
           <div className="flex items-center">
-            <FiClock className="inline-block mr-2 text-xl text-primary" />
-            <span className="text-primary font-semibold text-lg">3:30 PM</span>
+            <FiClock className="inline-block mr-2 text-md text-primary" />
+            <span className="text-primary font-semibold text-sm">3:30 PM</span>
           </div>
         </div>
         <button className="bg-red-200 text-primary rounded-3xl px-5 py-1">
