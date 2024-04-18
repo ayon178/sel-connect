@@ -12,10 +12,7 @@ const EventComponent = () => {
       <div className="flex justify-between gap-10">
         <div className="w-[55rem]">
           <CustomHeading firstText={'Events'} />
-          <p className="text-sm mb-8">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
-            doloribus magni voluptatum
-          </p>
+          <p className="text-sm mb-8">Discover what&apos;s happening around</p>
 
           {/* one item in a row */}
           <div className="max-w-[800px] mx-auto">

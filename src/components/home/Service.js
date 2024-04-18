@@ -8,22 +8,19 @@ const services = [
   {
     image: imageOne,
     title: 'Design Gallery',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
+    description: 'Explore Inspiring Home Designs: Your Design Gallery',
     link: '/interior-design',
   },
   {
     image: imageTwo,
     title: 'Previous Project',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
+    description: 'Discover Our Portfolio: Previous Home Design Projects',
     link: '/previous-project',
   },
   {
     image: imageThree,
     title: 'Interior Offers',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
+    description: 'Exclusive Deals Await: Interior Offers for Your Dream Home',
     link: '/interior-offer',
   },
 ]
@@ -41,8 +38,7 @@ const Service = () => {
             View Our <span className="text-primary">Interior</span> Services
           </h1>
           <p className="mt-2 text-gray-600 text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-            quos.
+            Transforming your home with world-class interior services.
           </p>
         </div>
       </div>

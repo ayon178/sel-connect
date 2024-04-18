@@ -9,8 +9,7 @@ const InteriorDesignComponent = () => {
         <div className="w-[55rem]">
           <CustomHeading firstText={'Interior Design'} />
           <p className="text-sm mb-8">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
-            doloribus magni voluptatum
+            Transforming your home with world-class interior services
           </p>
 
           {/* images */}

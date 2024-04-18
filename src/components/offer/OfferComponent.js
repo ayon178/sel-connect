@@ -12,8 +12,7 @@ const OfferComponent = () => {
           <div className="flex flex-col items-center justify-start">
             <CustomHeading firstText={'Offers'} />
             <p className="text-sm text-slate-500 mb-14">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
-              doloribus magni voluptatum
+              Unlock Exclusive Deals: Explore Our Offers
             </p>
 
             <div className="max-w-[800px] mx-auto">

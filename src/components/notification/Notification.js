@@ -15,8 +15,7 @@ const Notification = () => {
           <CustomHeading firstText="Notifications" />
 
           <p className="text-gray-500 mt-2 text-sm ">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Voluptates, aspernatur.
+            Stay updated with notifications
           </p>
 
           <div className="max-w-[800px] mx-auto mt-10">

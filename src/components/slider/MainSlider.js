@@ -17,15 +17,15 @@ SwiperCore.use([Pagination])
 const slides = [
   {
     image: sliderOne,
-    text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: 'Home is where you always want to be.',
   },
   {
     image: sliderTwo,
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    text: 'Home is where you always want to be.',
   },
   {
     image: sliderThree,
-    text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+    text: 'Home is where you always want to be.',
   },
 ]
 

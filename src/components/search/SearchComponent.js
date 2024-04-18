@@ -13,10 +13,7 @@ const SearchComponent = () => {
           <div className="w-[55rem]">
             <div className="flex flex-col items-center justify-start">
               <CustomHeading firstText={'Search'} />
-              <p className="text-sm mb-8">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
-                doloribus magni voluptatum
-              </p>
+              <p className="text-sm mb-8">Find a property</p>
               <div className="w-full mx-auto my-10">
                 <form>
                   <label
