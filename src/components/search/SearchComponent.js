@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import CustomHeading from '../shared/CustomHeading'
 import { PiDotsThreeOutlineVerticalFill } from 'react-icons/pi'
 import PropertySearchPopup from '../popup/PropertySearchPopup'
@@ -6,6 +6,30 @@ import commonImage from '@/assets/common-side.PNG'
 
 const SearchComponent = () => {
   const [openPopup, setOpenPopup] = useState(false)
+  const popupRef = useRef(null)
+
+  useEffect(() => {
+    // Function to handle clicks outside the popup
+    const handleClickOutside = event => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setOpenPopup(false)
+      }
+    }
+
+    // Add event listener when the popup is open
+    if (openPopup) {
+      document.addEventListener('mousedown', handleClickOutside)
+    } else {
+      // Remove event listener when the popup is closed
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+
+    // Clean up the event listener when component unmounts
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [openPopup])
+
   return (
     <>
       <div className="container mx-auto my-10">
@@ -17,15 +41,15 @@ const SearchComponent = () => {
               <div className="w-full mx-auto my-10">
                 <form>
                   <label
-                    for="default-search"
-                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                    htmlFor="default-search"
+                    className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
                   >
                     Search
                   </label>
-                  <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none">
+                  <div className="relative" ref={popupRef}>
+                    <div className="absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none">
                       <svg
-                        class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                        className="w-4 h-4 text-gray-500 dark:text-gray-400"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -33,9 +57,9 @@ const SearchComponent = () => {
                       >
                         <path
                           stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                         />
                       </svg>
@@ -43,15 +67,15 @@ const SearchComponent = () => {
                     <input
                       type="search"
                       id="default-search"
-                      class="block w-full px-6 py-3 ps-12 text-gray-900 border-2 border-slate-400 rounded-full bg-slate-50 focus:border-primary outline-none"
+                      className="block w-full px-6 py-3 ps-12 text-gray-900 border-2 border-slate-400 rounded-full bg-slate-50 focus:border-primary outline-none"
                       placeholder="Property Search"
                       required
                       onClick={() => setOpenPopup(true)}
                     />
                     {/* <PiDotsThreeOutlineVerticalFill
-                color="red"
-                className="text-primary absolute end-2.5 bottom-2.5   font-medium rounded-lg text-sm px-4 py-2 "
-              /> */}
+                      color="red"
+                      className="text-primary absolute end-2.5 bottom-2.5   font-medium rounded-lg text-sm px-4 py-2 "
+                    /> */}
                   </div>
                 </form>
               </div>
@@ -88,7 +112,7 @@ const SearchComponent = () => {
         </div>
       </div>
 
-      {openPopup && <PropertySearchPopup />}
+      {openPopup && <PropertySearchPopup ref={popupRef} />}
     </>
   )
 }
