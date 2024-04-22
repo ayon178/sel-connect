@@ -3,6 +3,9 @@ import { useRouter } from 'next/navigation'
 import CustomHeading from '../shared/CustomHeading'
 import commonImage from '@/assets/common-side.PNG'
 
+import imageOne from '../../assets/offer/interior_offer_1.png'
+import imageTwo from '../../assets/offer/interior_offer_2.png'
+
 const OfferComponent = () => {
   const router = useRouter()
   return (
@@ -17,7 +20,7 @@ const OfferComponent = () => {
 
             <div className="max-w-[800px] mx-auto">
               <div className="grid grid-cols-1 gap-8">
-                {Array(4)
+                {Array(2)
                   .fill()
                   .map((_, i) => (
                     <div
@@ -27,11 +30,13 @@ const OfferComponent = () => {
                       key={i}
                       className="shadow-lg rounded-2xl overflow-hidden"
                     >
-                      <img
-                        src="https://img.freepik.com/free-psd/modern-farmhouse-meadow-hill-generative-ai_587448-2243.jpg?w=996&t=st=1705758284~exp=1705758884~hmac=bd04a7ac7bd80196fc172606a27c387178e06d677ec62de5fb59de5b62839b0c"
-                        alt=""
-                      />
-
+                      <div className="w-full rounded-xl overflow-hidden h4">
+                        <img
+                          src={i === 1 ? imageOne.src : imageTwo.src}
+                          alt=""
+                          className="w-full h-full"
+                        />
+                      </div>
                       <h1 className="text-center text-2xl text-primary font-semibold py-4 cursor-pointer">
                         {i === 1 ? 'Eid Discount' : 'Discount'}
                       </h1>

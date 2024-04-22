@@ -3,40 +3,48 @@ import React from 'react'
 import commonImage from '../../../assets/common-side.PNG'
 import { useRouter } from 'next/navigation'
 
-const img =
-  'https://img.freepik.com/free-photo/luxury-pool-villa-spectacular-contemporary-design-digital-art-real-estate-home-house-property-ge_1258-150749.jpg?w=740&t=st=1704012228~exp=1704012828~hmac=2d11dad894f5a971aa326103a462df14764112186057effe8190effe8855859e'
+// image import
+import civilWork from '../../../assets/feedback/after_sales/civil.webp'
+import paintWork from '../../../assets/feedback/after_sales/paint.webp'
+import sanitaryWork from '../../../assets/feedback/after_sales/sanitary.jpg'
+import woodWork from '../../../assets/feedback/after_sales/wood.jpg'
+import thaiWork from '../../../assets/feedback/after_sales/thai.jpg'
+import msWork from '../../../assets/feedback/after_sales/ms.webp'
+import electricalWork from '../../../assets/feedback/after_sales/electrical.webp'
+import carpenterWork from '../../../assets/feedback/after_sales/carpenter.webp'
+
 const options = [
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: civilWork,
+    title: 'Civil Work',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: paintWork,
+    title: 'Paint Work',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: sanitaryWork,
+    title: 'Sanitary Work',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: woodWork,
+    title: 'Wood Work',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: thaiWork,
+    title: 'Thai Work',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: msWork,
+    title: 'MS Work',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: electricalWork,
+    title: 'Electrical Work',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: carpenterWork,
+    title: 'Carpenter Work',
   },
 ]
 
@@ -65,7 +73,13 @@ const AfterSalesFeedback = () => {
                 key={index}
                 className="flex flex-col items-center cursor-pointer"
               >
-                <img src={option.image} className="w-full rounded-xl" alt="" />
+                <div className="w-full h-32 rounded-xl overflow-hidden">
+                  <img
+                    src={option.image.src}
+                    className="w-full h-full"
+                    alt=""
+                  />
+                </div>
                 <p className="text-sm mt-2">{option.title}</p>
               </div>
             ))}

@@ -11,25 +11,30 @@ import { useRouter } from 'next/navigation'
 import green from '../../assets/my_property/SEL_GREEN_ACRES.png'
 import ashabori from '../../assets/my_property/SEL_Ashabori.png'
 
+import construction from '../../assets/feedback/construction.png'
+import afterSales from '../../assets/feedback/after_sales.png'
+import payment from '../../assets/feedback/payment.png'
+import interior from '../../assets/feedback/interior.png'
+
 const data = [
   {
     title: 'Construction',
-    icon: <RiBuilding2Line size={40} />,
+    icon: construction,
     link: '/feedback/construction',
   },
   {
     title: 'After Sales',
-    icon: <GiTakeMyMoney size={40} />,
+    icon: afterSales,
     link: '/feedback/after-sales',
   },
   {
     title: 'Payment',
-    icon: <FaCoins size={40} />,
+    icon: payment,
     link: '/feedback/payment',
   },
   {
     title: 'Interior',
-    icon: <TiHome size={40} />,
+    icon: interior,
     link: '/feedback/interior',
   },
 ]
@@ -150,7 +155,7 @@ const PropertyDetails = ({ id }) => {
                   className="flex flex-col items-center gap-4 mt-5 p-5 rounded-xl cursor-pointer"
                 >
                   <div className=" text-primary p-3 rounded-md">
-                    {item.icon}
+                    <img className="w-[50px]" src={item.icon.src} alt="" />
                   </div>
                   <h1 className="text-md font-semibold">{item.title}</h1>
                 </div>

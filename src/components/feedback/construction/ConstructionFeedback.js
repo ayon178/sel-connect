@@ -3,40 +3,48 @@ import React from 'react'
 import commonImage from '../../../assets/common-side.PNG'
 import { useRouter } from 'next/navigation'
 
-const img =
-  'https://img.freepik.com/free-photo/luxury-pool-villa-spectacular-contemporary-design-digital-art-real-estate-home-house-property-ge_1258-150749.jpg?w=740&t=st=1704012228~exp=1704012828~hmac=2d11dad894f5a971aa326103a462df14764112186057effe8190effe8855859e'
+// image import
+import imageOne from '../../../assets/feedback/construction/1.jpg'
+import imageTwo from '../../../assets/feedback/construction/2.jpg'
+import imageThree from '../../../assets/feedback/construction/3.jpg'
+import imageFour from '../../../assets/feedback/construction/4.jpg'
+import imageFive from '../../../assets/feedback/construction/5.jpg'
+import imageSix from '../../../assets/feedback/construction/6.jpg'
+import imageSeven from '../../../assets/feedback/construction/7.jpg'
+import imageEight from '../../../assets/feedback/construction/8.jpg'
+
 const options = [
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageOne,
+    title: 'Wall Layout (Internal)',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageTwo,
+    title: 'Tiles (Bath & Kitchen)',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageThree,
+    title: 'Floor Finish (Tiles)',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageFour,
+    title: 'Sanitary fitting',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageFive,
+    title: 'Bathroom fitting layout',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageSix,
+    title: 'Extra electric point in roof',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageSeven,
+    title: 'Sanitary wares (Basin, Commode, Taps)',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageEight,
+    title: 'Doc Frame',
   },
 ]
 
@@ -67,7 +75,14 @@ const ConstructionFeedback = () => {
                 key={index}
                 className="flex flex-col items-center cursor-pointer"
               >
-                <img src={option.image} className="w-full rounded-xl" alt="" />
+                <div className="w-full h-32 rounded-xl overflow-hidden">
+                  <img
+                    src={option.image.src}
+                    className="w-full h-full"
+                    alt=""
+                  />
+                </div>
+
                 <p className="text-sm mt-2">{option.title}</p>
               </div>
             ))}

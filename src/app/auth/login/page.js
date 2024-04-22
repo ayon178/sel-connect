@@ -49,7 +49,7 @@ export default function Login() {
   return (
     <div
       style={{
-        backgroundImage: ` url(${loginBg.src})`,
+        // backgroundImage: ` url(${loginBg.src})`,
         backgroundSize: 'cover',
         backdropFilter: 'blur(10px)',
         backgroundPosition: 'top ',

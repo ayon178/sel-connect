@@ -3,40 +3,58 @@ import React from 'react'
 import commonImage from '../../../assets/common-side.PNG'
 import { useRouter } from 'next/navigation'
 
-const img =
-  'https://img.freepik.com/free-photo/luxury-pool-villa-spectacular-contemporary-design-digital-art-real-estate-home-house-property-ge_1258-150749.jpg?w=740&t=st=1704012228~exp=1704012828~hmac=2d11dad894f5a971aa326103a462df14764112186057effe8190effe8855859e'
+// image import
+import imageOne from '../../../assets/feedback/payment/1.jpg'
+import imageTwo from '../../../assets/feedback/payment/2.jpg'
+import imageThree from '../../../assets/feedback/payment/3.jpg'
+import imageFour from '../../../assets/feedback/payment/4.jpg'
+import imageFive from '../../../assets/feedback/payment/5.jpg'
+import imageSix from '../../../assets/feedback/payment/6.jpg'
+import imageSeven from '../../../assets/feedback/payment/7.jpg'
+import imageEight from '../../../assets/feedback/payment/8.jpg'
+import imageNine from '../../../assets/feedback/payment/9.jpeg'
+import imageTen from '../../../assets/feedback/payment/10.png'
+
 const options = [
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageOne,
+    title: 'Name Change',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageTwo,
+    title: 'Cheque Status',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageThree,
+    title: 'Payment Status',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageFour,
+    title: 'Refund',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageFive,
+    title: 'Handover Procedure',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageSix,
+    title: 'Other Payments',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageSeven,
+    title: 'Allotment Deed',
   },
   {
-    image: img,
-    title: 'Wall Layout(interior)',
+    image: imageEight,
+    title: 'Loan Papers',
+  },
+  {
+    image: imageNine,
+    title: 'Registration Process',
+  },
+  {
+    image: imageTen,
+    title: 'Other Papers',
   },
 ]
 
@@ -65,7 +83,13 @@ const PaymentFeedback = () => {
                 key={index}
                 className="flex flex-col items-center cursor-pointer"
               >
-                <img src={option.image} className="w-full rounded-xl" alt="" />
+                <div className="w-full h-32 rounded-xl overflow-hidden">
+                  <img
+                    src={option.image.src}
+                    className="w-full h-full"
+                    alt=""
+                  />
+                </div>
                 <p className="text-sm mt-2">{option.title}</p>
               </div>
             ))}
