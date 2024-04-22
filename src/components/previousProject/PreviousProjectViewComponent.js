@@ -2,7 +2,13 @@ import React from 'react'
 import CustomHeading from '../shared/CustomHeading'
 import commonImage from '@/assets/common-side.PNG'
 
-const PreviousProjectViewComponent = ({ projectId }) => {
+// image import
+import imageOne from '../../assets/previous_project/1.jpg'
+import imageTwo from '../../assets/previous_project/2.jpg'
+import imageThree from '../../assets/previous_project/3.jpg'
+import imageFour from '../../assets/previous_project/4.jpg'
+
+const PreviousProjectViewComponent = ({ id }) => {
   return (
     <div className="container mx-auto my-10">
       <div className="flex justify-between gap-10">
@@ -15,15 +21,24 @@ const PreviousProjectViewComponent = ({ projectId }) => {
             </p>
 
             <div className="max-w-[800px] mx-auto ">
-              <div className="shadow-lg rounded-2xl overflow-hidden">
+              <div className="shadow-lg w-full h-64 rounded-2xl overflow-hidden">
                 <img
-                  src="https://img.freepik.com/free-psd/modern-farmhouse-meadow-hill-generative-ai_587448-2243.jpg?w=996&t=st=1705758284~exp=1705758884~hmac=bd04a7ac7bd80196fc172606a27c387178e06d677ec62de5fb59de5b62839b0c"
+                  src={
+                    id === '1'
+                      ? imageOne.src
+                      : id === '2'
+                      ? imageTwo.src
+                      : id === '3'
+                      ? imageThree.src
+                      : imageFour.src
+                  }
                   alt=""
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
 
               <h1 className=" text-2xl text-center text-primary font-semibold pt-4 pb-2 cursor-pointer">
-                {projectId === '2' ? 'Eid Discount' : 'Discount'}
+                {'SEL Nirbana Bhaban'}
               </h1>
 
               <p className="text-[12px] text-center text-gray-700">

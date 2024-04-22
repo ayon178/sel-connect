@@ -3,30 +3,21 @@ import CustomHeading from '../shared/CustomHeading'
 import commonImage from '../../assets/common-side.PNG'
 import { useRouter } from 'next/navigation'
 
-const img =
-  'https://img.freepik.com/free-photo/luxury-pool-villa-spectacular-contemporary-design-digital-art-real-estate-home-house-property-ge_1258-150749.jpg?w=740&t=st=1704012228~exp=1704012828~hmac=2d11dad894f5a971aa326103a462df14764112186057effe8190effe8855859e'
+// image import
+import imageOne from '../../assets/interior_offer/interior_offer_1.png'
+import imageTwo from '../../assets/interior_offer/interior_offer_2.png'
+
+
 const services = [
   {
-    image: img,
-    title: 'Interior Design',
+    image: imageOne.src,
+    title: 'Discount',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
   },
   {
-    image: img,
-    title: 'Interior Design',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-  },
-  {
-    image: img,
-    title: 'Interior Design',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-  },
-  {
-    image: img,
-    title: 'Interior Design',
+    image: imageTwo.src,
+    title: 'Offer For SEL',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
   },

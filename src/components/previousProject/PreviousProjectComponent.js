@@ -3,42 +3,34 @@ import React from 'react'
 import CustomHeading from '../shared/CustomHeading'
 import commonImage from '@/assets/common-side.PNG'
 
-const img =
-  'https://img.freepik.com/free-photo/luxury-pool-villa-spectacular-contemporary-design-digital-art-real-estate-home-house-property-ge_1258-150749.jpg?w=740&t=st=1704012228~exp=1704012828~hmac=2d11dad894f5a971aa326103a462df14764112186057effe8190effe8855859e'
+// image import
+import imageOne from '../../assets/previous_project/1.jpg'
+import imageTwo from '../../assets/previous_project/2.jpg'
+import imageThree from '../../assets/previous_project/3.jpg'
+import imageFour from '../../assets/previous_project/4.jpg'
+
 const services = [
   {
-    image: img,
-    title: 'Interior Design',
+    image: imageOne.src,
+    title: 'SEL Nirbana Bhaban',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
   },
   {
-    image: img,
-    title: 'Interior Design',
+    image: imageTwo.src,
+    title: 'SEL Nirbana Bhaban',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
   },
   {
-    image: img,
-    title: 'Interior Design',
+    image: imageThree.src,
+    title: 'SEL Nirbana Bhaban',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
   },
   {
-    image: img,
-    title: 'Interior Design',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-  },
-  {
-    image: img,
-    title: 'Interior Design',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-  },
-  {
-    image: img,
-    title: 'Interior Design',
+    image: imageFour.src,
+    title: 'SEL Nirbana Bhaban',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
   },
@@ -93,8 +85,8 @@ const ServiceCard = ({ service }) => {
       }}
       className="rounded-md w-62 p-2 pb-5"
     >
-      <div className="rounded-md overflow-hidden">
-        <img src={image} alt={title} className="w-full h-auto" />
+      <div className="rounded-md w-full h-40 overflow-hidden">
+        <img src={image} alt={title} className="w-full h-full" />
       </div>
       <h1 className="text-md text-center mt-4 font-bold text-tertiaryText">
         {title}

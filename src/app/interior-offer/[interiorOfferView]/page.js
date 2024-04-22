@@ -76,7 +76,7 @@ const InteriorOfferView = ({ params }) => {
   return (
     <>
       <Navbar />
-      <InteriorOfferViewComponent dynamicId={params.InteriorOfferView} />
+      <InteriorOfferViewComponent dynamicId={params.interiorOfferView} />
     </>
   )
 }

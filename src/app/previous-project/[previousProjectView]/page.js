@@ -5,7 +5,7 @@ import Navbar from '@/components/shared/Navbar'
 import gsap from 'gsap'
 import React, { useEffect, useState } from 'react'
 
-const PreviousProjectView = () => {
+const PreviousProjectView = ({ params }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [loadingStartTime, setLoadingStartTime] = useState(0)
 
@@ -76,7 +76,7 @@ const PreviousProjectView = () => {
   return (
     <>
       <Navbar />
-      <PreviousProjectViewComponent />
+      <PreviousProjectViewComponent id={params.previousProjectView} />
     </>
   )
 }

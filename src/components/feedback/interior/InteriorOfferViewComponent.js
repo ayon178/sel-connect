@@ -2,7 +2,12 @@ import CustomHeading from '@/components/shared/CustomHeading'
 import React from 'react'
 import commonImage from '@/assets/common-side.PNG'
 
+// image import
+import imageOne from '../../../assets/interior_offer/interior_offer_1.png'
+import imageTwo from '../../../assets/interior_offer/interior_offer_2.png'
+
 const InteriorOfferViewComponent = ({ dynamicId }) => {
+  console.log(dynamicId, 'dynamicId')
   return (
     <div className="container mx-auto my-10">
       <div className="flex justify-between gap-10">
@@ -17,7 +22,7 @@ const InteriorOfferViewComponent = ({ dynamicId }) => {
             <div className="max-w-[600px] mx-auto mt-5">
               <img
                 className="rounded-lg"
-                src="https://img.freepik.com/free-psd/modern-farmhouse-meadow-hill-generative-ai_587448-2243.jpg?w=996&t=st=1705758284~exp=1705758884~hmac=bd04a7ac7bd80196fc172606a27c387178e06d677ec62de5fb59de5b62839b0c"
+                src={dynamicId === '1' ? imageOne.src : imageTwo.src}
                 alt=""
               />
               <h1 className="text-center mt-4 mb-6 text-primary text-2xl font-semibold">
