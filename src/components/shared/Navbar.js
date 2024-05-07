@@ -93,7 +93,7 @@ const Navbar = () => {
             SEL Connect
           </h1>
         </Link>
-        <ul className="flex-row items-center gap-9 text-sm font-semibold text_color text-secondaryText hidden md:flex">
+        <ul className="flex-row items-center gap-9 text-xs font-semibold text_color text-secondaryText hidden md:flex">
           <li>
             <Link
               href="/#"

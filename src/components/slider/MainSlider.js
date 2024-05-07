@@ -101,7 +101,7 @@ const MainSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="custom-pagination rounded-md z-50 bg-white shadow-xl w-[10rem] px-6 py-3 absolute bottom-[-1rem] left-[35%] sm:left-[38%] md:left-[26.5%] right-0 flex justify-center">
+      <div className="custom-pagination rounded-md z-50 bg-white shadow-xl w-[10rem] px-6 py-3 absolute bottom-[-1rem] left-[30%] sm:left-[38%] md:left-[26.5%] right-0 flex justify-center">
         {slides.map((_, index) => (
           <div
             key={index}
