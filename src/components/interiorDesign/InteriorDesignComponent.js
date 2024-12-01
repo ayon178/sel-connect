@@ -1,12 +1,16 @@
 import React from 'react'
 import CustomHeading from '../shared/CustomHeading'
 import commonImage from '@/assets/common-side.PNG'
+import interior from '@/assets/interior_design/interior.jpeg'
+import interior2 from '@/assets/interior_design/interior-2.png'
+import interior3 from '@/assets/interior_design/interior-3.png'
+import interior4 from '@/assets/interior_design/interior-4.png'
 
 const InteriorDesignComponent = () => {
   return (
-    <div className="container mx-auto my-10">
-      <div className="flex justify-between gap-10">
-        <div className="w-[55rem]">
+    <div className="container mx-auto my-10 px-5">
+      <div className="flex justify-between items-start gap-10">
+        <div className="w-[55rem] mt-10">
           <CustomHeading firstText={'Interior Design'} />
           <p className="text-sm mb-8">
             Transforming your home with world-class interior services
@@ -14,28 +18,17 @@ const InteriorDesignComponent = () => {
 
           {/* images */}
           <div className="">
-            <img
-              className="rounded-lg"
-              src="https://img.freepik.com/free-psd/modern-farmhouse-meadow-hill-generative-ai_587448-2243.jpg?w=996&t=st=1705758284~exp=1705758884~hmac=bd04a7ac7bd80196fc172606a27c387178e06d677ec62de5fb59de5b62839b0c"
-              alt=""
-            />
+            <img className="rounded-lg" src={interior.src} alt="" />
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mt-4">
-            <img
-              className="rounded-lg"
-              src="https://img.freepik.com/free-psd/modern-farmhouse-meadow-hill-generative-ai_587448-2243.jpg?w=996&t=st=1705758284~exp=1705758884~hmac=bd04a7ac7bd80196fc172606a27c387178e06d677ec62de5fb59de5b62839b0c"
-              alt=""
-            />
-            <img
-              className="rounded-lg"
-              src="https://img.freepik.com/free-psd/modern-farmhouse-meadow-hill-generative-ai_587448-2243.jpg?w=996&t=st=1705758284~exp=1705758884~hmac=bd04a7ac7bd80196fc172606a27c387178e06d677ec62de5fb59de5b62839b0c"
-              alt=""
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+            <img className="rounded-lg" src={interior2.src} alt="" />
+            <img className="rounded-lg" src={interior3.src} alt="" />
+            <img className="rounded-lg" src={interior4.src} alt="" />
           </div>
         </div>
 
-        <div className="max-w-[30rem]">
+        <div className="max-w-[30rem] sticky top-24 hidden md:flex">
           <img src={commonImage.src} className="w-full" alt="" />
         </div>
       </div>

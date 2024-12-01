@@ -22,7 +22,7 @@
 @tailwind utilities;
 
 html {
-  overflow-x: hidden !important;
+  /* overflow-x: hidden !important; */
   scroll-behavior: smooth !important;
 }
 
@@ -134,6 +134,13 @@ body {
   position: relative;
 }
 
+.popup_content_feedback {
+  width: 65%;
+}
+.popup_content_property {
+  width: 55%;
+}
+
 .popup_bg {
   background-image: url('/images/first_bg_popup.png') !important;
   background-repeat: no-repeat;
@@ -156,8 +163,39 @@ body {
   margin-top: 1.4rem;
 }
 
+.loader_height_width {
+  height: calc(100vh - 200px);
+  width: 100%;
+}
+
+/* Custom styles for react-month-picker */
+
+/* Active month */
+.rmp-btn {
+  font-size: 16px !important;
+}
+.rmp-btn.active {
+  background-color: #5d2629 !important;
+  color: white;
+}
+
+/* Hover month */
+.rmp-btn:hover {
+  background-color: #ffded7 !important;
+  color: slategray !important;
+}
+
 @media screen and (max-width: 768px) {
   .popup_content {
     width: 90%;
   }
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth !important;
+}
+
+.overflow_custom {
+  overflow-x: auto !important;
 }

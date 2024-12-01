@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import CustomHeading from '../shared/CustomHeading'
 import commonImage from '../../assets/common-side.PNG'
@@ -6,7 +8,6 @@ import { useRouter } from 'next/navigation'
 // image import
 import imageOne from '../../assets/interior_offer/interior_offer_1.png'
 import imageTwo from '../../assets/interior_offer/interior_offer_2.png'
-
 
 const services = [
   {
@@ -27,12 +28,12 @@ const InteriorOffer = () => {
   const router = useRouter()
 
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto my-10 px-5">
       <div className="flex justify-between gap-10">
         <div className="w-[55rem]">
           <div className="flex flex-col items-center justify-start">
             <CustomHeading firstText={'Interior Offers'} />
-            <p className="text-sm mb-8 mt-2">
+            <p className="text-sm mb-0 sm:mb-8 mt-2 text-center sm:text-justify">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
               doloribus magni voluptatum
             </p>
@@ -41,7 +42,9 @@ const InteriorOffer = () => {
               {services.map((service, index) => (
                 <div
                   key={index}
-                  onClick={() => router.push(`/interior-offer/${index + 1}`)}
+                  onClick={() =>
+                    router.push(`/user/interior-offer/${index + 1}`)
+                  }
                 >
                   <ServiceCard service={service} />
                 </div>
@@ -50,7 +53,7 @@ const InteriorOffer = () => {
           </div>
         </div>
 
-        <div className="max-w-[30rem]">
+        <div className="max-w-[30rem] hidden md:flex">
           <img src={commonImage.src} className="w-full" alt="" />
         </div>
       </div>

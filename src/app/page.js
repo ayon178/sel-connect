@@ -1,85 +1,64 @@
 'use client'
 
 import Service from '@/components/home/Service'
+import Loader from '@/components/shared/Loader'
 import Navbar from '@/components/shared/Navbar'
 import MainSlider from '@/components/slider/MainSlider'
-import gsap from 'gsap'
+// import gsap from 'gsap'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
-  const [loadingStartTime, setLoadingStartTime] = useState(0)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const authenticated = window.localStorage.getItem('isAuthenticated')
+      setIsLoading(true)
+      const authenticated = window.localStorage.getItem('selConnect')
       if (!authenticated) {
         window.location.href = '/auth/login'
         return
       }
+      const parsed = JSON.parse(authenticated)
 
-      const navbar = document.querySelector('#navbar')
-      const text = document.querySelectorAll('.text_color')
-      const button = document.querySelectorAll('.register_button')
-      const timeline = gsap.timeline({ paused: true })
-
-      timeline.to(navbar, {
-        backdropFilter: 'blur(10px)',
-        duration: 0.1,
-        ease: 'power3.inOut',
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
-        marginTop: 0,
-        paddingBottom: '.8rem',
-        paddingTop: '.8rem',
-      })
-
-      timeline.to(text, {
-        color: '#1F2937',
-        ease: 'power3.inOut',
-      })
-
-      timeline.to(button, {
-        backgroundColor: '#732318',
-        color: '#fff',
-        ease: 'power3.inOut',
-      })
-
-      setLoadingStartTime(performance.now())
-      setTimeout(() => {
-        setIsLoading(false)
-      }, 1000)
-
-      const scrollListener = () => {
-        if (window.scrollY === 0) {
-          timeline.reverse()
-        } else {
-          timeline.play()
+      if (parsed.role === 'admin') {
+        if (parsed.type === '2') {
+          window.location.href = '/admin/sales'
+        } else if (parsed.type === '3') {
+          window.location.href = '/admin/marketing'
+        } else if (parsed.type === '4') {
+          window.location.href = '/admin/construction'
+        } else if (parsed.type === '5') {
+          window.location.href = '/admin/accounts'
+        } else if (parsed.type === '6') {
+          window.location.href = '/admin/after-sales'
+        } else if (parsed.type === '8') {
+          window.location.href = '/admin/legal'
+        } else if (parsed.type === '7') {
+          window.location.href = '/admin/interior'
+        } else if (parsed.type === '9') {
+          window.location.href = '/admin/hr'
+        } else if (parsed.type === '10') {
+          window.location.href = '/admin/staff'
         }
+        setIsLoading(false)
       }
-
-      window.addEventListener('scroll', scrollListener)
-
-      return () => {
-        window.removeEventListener('scroll', scrollListener)
-      }
+      setIsLoading(false)
     }
   }, [])
 
-  useEffect(() => {
-    if (!isLoading) {
-      const loadingEndTime = performance.now()
-      const loadingTime = loadingEndTime - loadingStartTime
-      console.log(`Loading time: ${loadingTime} ms`)
-    }
-  }, [isLoading, loadingStartTime])
-
   return (
     <>
-      <Navbar />
-      <MainSlider />
-      <main>
-        <Service />
-      </main>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Navbar />
+          <MainSlider />
+          <main>
+            <Service />
+          </main>
+        </>
+      )}
     </>
   )
 }

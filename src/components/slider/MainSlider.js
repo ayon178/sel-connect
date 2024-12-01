@@ -1,3 +1,5 @@
+'use client'
+
 // CustomSlider.js
 import { GoHomeFill } from 'react-icons/go'
 
@@ -63,7 +65,7 @@ const MainSlider = () => {
         slidesPerView={1}
         onSwiper={handleSwiperUpdate}
         pagination={false}
-        className="h-screen md:h-[70vh]" // Set height based on the screen size
+        className="h-screen " //md:h-[70vh] Set height based on the screen size
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index} className="relative">
@@ -88,7 +90,7 @@ const MainSlider = () => {
                   Choose <span className="text-primary">Differently.</span>
                 </h1>
                 <button
-                  onClick={() => router.push('/my-property')}
+                  onClick={() => router.push('/user/my-property')}
                   className="bg-primary text-white px-10 py-2 rounded-lg mt-4 flex flex-col items-center justify-center"
                 >
                   <GoHomeFill size={35} />

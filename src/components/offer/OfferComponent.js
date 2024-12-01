@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import CustomHeading from '../shared/CustomHeading'
@@ -9,12 +11,12 @@ import imageTwo from '../../assets/offer/interior_offer_2.png'
 const OfferComponent = () => {
   const router = useRouter()
   return (
-    <div className="container mx-auto my-10">
-      <div className="flex justify-between gap-10">
+    <div className="container mx-auto my-10 px-5">
+      <div className="flex justify-between items-start gap-10">
         <div className="w-[55rem]">
-          <div className="flex flex-col items-center justify-start">
+          <div className="flex flex-col items-center mt-14 justify-start">
             <CustomHeading firstText={'Offers'} />
-            <p className="text-sm text-slate-500 mb-14">
+            <p className="text-sm text-slate-500 mb-5 md:mb-14">
               Unlock Exclusive Deals: Explore Our Offers
             </p>
 
@@ -25,7 +27,7 @@ const OfferComponent = () => {
                   .map((_, i) => (
                     <div
                       onClick={() =>
-                        router.push(`/offer/property-offer/${i + 1}`)
+                        router.push(`/user/offer/property-offer/${i + 1}`)
                       }
                       key={i}
                       className="shadow-lg rounded-2xl overflow-hidden"
@@ -46,7 +48,7 @@ const OfferComponent = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-[30rem]">
+        <div className="max-w-[30rem] sticky top-24 hidden md:flex">
           <img src={commonImage.src} className="w-full" alt="" />
         </div>
       </div>

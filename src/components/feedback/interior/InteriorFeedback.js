@@ -33,12 +33,12 @@ const services = [
 const InteriorFeedback = () => {
   const router = useRouter()
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto my-10 px-5">
       <div className="flex justify-between gap-10">
         <div className="w-[55rem]">
           <div className="flex flex-col items-center justify-start">
             <CustomHeading firstText={'Interior'} />
-            <p className="text-sm mb-8 mt-2">
+            <p className="text-sm mb-8 mt-2 text-center">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
               doloribus magni voluptatum
             </p>
@@ -46,19 +46,21 @@ const InteriorFeedback = () => {
             {/* option cards */}
             <div className="w-full mb-20 md:w-1/2 gap-5 mx-auto flex justify-between items-center">
               <div
-                onClick={() => router.push('/feedback/interior/create-event')}
+                onClick={() =>
+                  router.push('/user/feedback/interior/create-event')
+                }
                 style={{
                   boxShadow: '1px 2px 10px rgba(0, 0, 0, 0.2)',
                 }}
                 className="flex cursor-pointer flex-col w-1/2 items-center gap-2 p-4 bg-white shadow-md rounded-xl"
               >
                 <BsPeople className="text-3xl text-primary" />
-                <h3 className="text-sm ">Schedule a meeting</h3>
+                <h3 className="text-sm text-center">Schedule a meeting</h3>
               </div>
 
               <div
                 onClick={() =>
-                  router.push('/feedback/interior/custom-feedback')
+                  router.push('/user/feedback/interior/custom-feedback')
                 }
                 style={{
                   boxShadow: '1px 2px 10px rgba(0, 0, 0, 0.2)',
@@ -66,14 +68,16 @@ const InteriorFeedback = () => {
                 className="flex cursor-pointer flex-col w-1/2 items-center gap-2 p-4 bg-white shadow-md rounded-lg"
               >
                 <VscFeedback className="text-3xl text-primary" />
-                <h3 className="text-sm ">Send a feedback</h3>
+                <h3 className="text-sm text-center">Send a feedback</h3>
               </div>
             </div>
 
-            <CustomHeading firstText={'View Out Interior Services'} />
-            <p className="text-sm mb-8 mt-2">
+            <div className="flex justify-center text-center sm:text-start">
+              <CustomHeading firstText={'View Out Interior Services'} />
+            </div>
+            <p className="text-sm mb-0 md:mb-8 mt-2 text-center">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
-              doloribus magni voluptatum
+              doloribus magni voluptatum..
             </p>
 
             {/* Service div */}
@@ -87,7 +91,7 @@ const InteriorFeedback = () => {
 
             <button
               onClick={() =>
-                router.push('/feedback/after-sales/custom-feedback')
+                router.push('/user/feedback/after-sales/custom-feedback')
               }
               className="bg-primary text-white w-full flex items-center justify-between py-2 px-10 mt-10 rounded-2xl"
             >
@@ -97,7 +101,7 @@ const InteriorFeedback = () => {
           </div>
         </div>
 
-        <div className="max-w-[30rem]">
+        <div className="max-w-[30rem] hidden md:flex">
           <img src={commonImage.src} className="w-full" alt="" />
         </div>
       </div>

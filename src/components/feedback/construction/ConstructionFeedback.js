@@ -2,6 +2,7 @@ import CustomHeading from '@/components/shared/CustomHeading'
 import React from 'react'
 import commonImage from '../../../assets/common-side.PNG'
 import { useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 // image import
 import imageOne from '../../../assets/feedback/construction/1.jpg'
@@ -50,18 +51,23 @@ const options = [
 
 const ConstructionFeedback = () => {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const id = searchParams.get('id')
+
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto my-10 px-5">
       <div className="flex justify-between gap-10">
         <div className="w-[55rem]">
           <div className="flex flex-col items-center justify-start">
             <CustomHeading firstText={'Construction'} />
-            <p className="text-sm mb-8">
+            <p className="text-sm mb-8 text-center sm:text-justify">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
               doloribus magni voluptatum
             </p>
 
-            <CustomHeading secondText={'General Feedback Options'} />
+            <div className="text-center sm:text-left">
+              <CustomHeading secondText={'General Feedback Options'} />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-6">
@@ -69,7 +75,7 @@ const ConstructionFeedback = () => {
               <div
                 onClick={() =>
                   router.push(
-                    `/feedback/construction/general-feedback/${index}`
+                    `/user/feedback/construction/general-feedback/${index}?id=${id}`
                   )
                 }
                 key={index}
@@ -89,7 +95,9 @@ const ConstructionFeedback = () => {
           </div>
           <button
             onClick={() =>
-              router.push('/feedback/construction/custom-feedback')
+              router.push(
+                `/user/feedback/construction/custom-feedback?id=${id}`
+              )
             }
             className="bg-primary text-white w-full py-2 mt-10 rounded-2xl"
           >
@@ -97,7 +105,7 @@ const ConstructionFeedback = () => {
           </button>
         </div>
 
-        <div className="max-w-[30rem]">
+        <div className="max-w-[30rem] hidden md:flex">
           <img src={commonImage.src} className="w-full" alt="" />
         </div>
       </div>

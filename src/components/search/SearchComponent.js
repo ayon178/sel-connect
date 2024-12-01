@@ -1,52 +1,75 @@
-import React, { useState, useRef, useEffect } from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 import CustomHeading from '../shared/CustomHeading'
-import { PiDotsThreeOutlineVerticalFill } from 'react-icons/pi'
 import PropertySearchPopup from '../popup/PropertySearchPopup'
 import commonImage from '@/assets/common-side.PNG'
+import toast from 'react-hot-toast'
+import {
+  getAllDivision,
+  getAppartmentBySearch,
+  getAreaListForDivision,
+} from '@/functions/api'
+import { useRouter } from 'next/navigation'
 
 const SearchComponent = () => {
+  const router = useRouter()
+  const [divisions, setDivisions] = useState([])
+  const [areas, setAreas] = useState([])
+
+  const [formData, setFormData] = useState({
+    division: '',
+    area: '',
+    type: 'all',
+  })
   const [openPopup, setOpenPopup] = useState(false)
-  const popupRef = useRef(null)
+  const [filteredApartment, setFilteredApartment] = useState([])
+
+  const handleSearch = async () => {
+    if (formData.division === '' || formData.area === '') {
+      toast.error('Please select all fields')
+      return
+    }
+    const data = await getAppartmentBySearch(formData)
+    setFilteredApartment(data)
+    setOpenPopup(false)
+  }
 
   useEffect(() => {
-    // Function to handle clicks outside the popup
-    const handleClickOutside = event => {
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
-        setOpenPopup(false)
-      }
+    const fetchDivisions = async () => {
+      const data = await getAllDivision()
+      setDivisions(data)
     }
+    fetchDivisions()
+  }, [])
 
-    // Add event listener when the popup is open
-    if (openPopup) {
-      document.addEventListener('mousedown', handleClickOutside)
-    } else {
-      // Remove event listener when the popup is closed
-      document.removeEventListener('mousedown', handleClickOutside)
+  useEffect(() => {
+    const fetchArea = async () => {
+      const data = await getAreaListForDivision(formData.division)
+      setAreas(data)
     }
+    fetchArea()
+  }, [formData.division])
 
-    // Clean up the event listener when component unmounts
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [openPopup])
+  console.log(filteredApartment)
 
   return (
     <>
-      <div className="container mx-auto my-10">
-        <div className="flex justify-between gap-10">
+      <div className="container mx-auto my-10 px-5">
+        <div className="flex items-start justify-between gap-10">
           <div className="w-[55rem]">
-            <div className="flex flex-col items-center justify-start">
+            <div className="flex  mt-14 flex-col items-center justify-start">
               <CustomHeading firstText={'Search'} />
-              <p className="text-sm mb-8">Find a property</p>
-              <div className="w-full mx-auto my-10">
-                <form>
+              <p className="text-sm">Find available properties of SEL here</p>
+              <div className="w-full mx-auto my:5 md:my-10">
+                {/* <form>
                   <label
                     htmlFor="default-search"
                     className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
                   >
                     Search
                   </label>
-                  <div className="relative" ref={popupRef}>
+                  <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none">
                       <svg
                         className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -72,47 +95,114 @@ const SearchComponent = () => {
                       required
                       onClick={() => setOpenPopup(true)}
                     />
-                    {/* <PiDotsThreeOutlineVerticalFill
-                      color="red"
-                      className="text-primary absolute end-2.5 bottom-2.5   font-medium rounded-lg text-sm px-4 py-2 "
-                    /> */}
                   </div>
-                </form>
-              </div>
-              <div
-                style={{
-                  boxShadow:
-                    '0 4px 8px rgba(0, 0, 0, 0.05), 0 6px 20px rgba(0, 0, 0, 0.1)',
-                }}
-                className=" rounded-xl w-full mx-auto p-4"
-              >
-                <div className="flex gap-4 items-start">
-                  <div className="rounded-md overflow-hidden">
-                    <img
-                      src="https://img.freepik.com/free-psd/modern-farmhouse-meadow-hill-generative-ai_587448-2243.jpg?w=996&t=st=1705758284~exp=1705758884~hmac=bd04a7ac7bd80196fc172606a27c387178e06d677ec62de5fb59de5b62839b0c"
-                      alt=""
-                      className="w-full h-36"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2 mt-2">
-                    <h1 className="text-lg text-primary font-semibold">
-                      SEL Miraj
-                    </h1>
-                    <p className="text-sm text-gray-600">Address: Azimpur</p>
+                </form> */}
 
-                    <p className="text-sm text-gray-600">Area: Lalbagh</p>
+                <div>
+                  <div className="grid grid-cols-2 gap-x-4">
+                    <select
+                      onChange={e => {
+                        setFormData({ ...formData, division: e.target.value })
+                      }}
+                      id="Division"
+                      className="bg-gray-200 col-span-2 border border-transparent text-gray-900 text-sm rounded-lg outline-none focus:border-primary block w-full p-2.5 mt-4"
+                    >
+                      <option selected>Select Division</option>
+                      {divisions?.map((division, index) => (
+                        <option key={index} value={division.division}>
+                          {division.division}
+                        </option>
+                      ))}
+                    </select>
+
+                    <select
+                      onChange={e => {
+                        setFormData({ ...formData, area: e.target.value })
+                      }}
+                      id="area"
+                      className="bg-gray-200 border border-transparent text-gray-900 text-sm rounded-lg outline-none focus:border-primary block  p-2.5 mt-4"
+                    >
+                      <option selected>Select Area</option>
+                      {areas?.map((area, index) => (
+                        <option key={index} value={area.area}>
+                          {area.area}
+                        </option>
+                      ))}
+                    </select>
+
+                    <select
+                      onChange={e => {
+                        setFormData({ ...formData, type: e.target.value })
+                      }}
+                      id="all"
+                      className="bg-gray-200 border border-transparent text-gray-900 text-sm rounded-lg outline-none focus:border-primary block  p-2.5 mt-4"
+                    >
+                      <option selected>All</option>
+                      <option value="Apartment">Apartment</option>
+                      <option value="Commercial Space">Commercial Space</option>
+                      <option value="Shop">Shop</option>
+                    </select>
                   </div>
+
+                  <button
+                    onClick={handleSearch}
+                    className="bg-primary mt-6 text-white w-full px-4 py-2 rounded-full"
+                  >
+                    Search
+                  </button>
                 </div>
               </div>
+              {filteredApartment?.map((apartment, index) => (
+                <div
+                  onClick={() =>
+                    router.push(`/user/search/flat-list/${apartment?.id}`)
+                  }
+                  key={index}
+                  style={{
+                    boxShadow:
+                      '0 4px 8px rgba(0, 0, 0, 0.05), 0 6px 20px rgba(0, 0, 0, 0.1)',
+                  }}
+                  className=" rounded-xl w-full mx-auto p-4 cursor-pointer"
+                >
+                  <div className="sm:flex gap-4 items-start">
+                    <div className="rounded-md bg-gray-300 p-2 h-full w-full md:w-1/3 flex items-center justify-center overflow-hidden">
+                      <img
+                        src={apartment?.img_url}
+                        alt=""
+                        className="w-full h-36"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2 mt-2">
+                      <h1 className="text-lg text-primary font-semibold">
+                        {apartment?.name}
+                      </h1>
+                      <p className="text-sm text-gray-600">
+                        Address: {apartment?.address}
+                      </p>
+
+                      <p className="text-sm text-gray-600">
+                        Area: {apartment?.area}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="max-w-[30rem]">
+          <div className="max-w-[30rem] sticky top-24 hidden md:flex">
             <img src={commonImage.src} className="w-full" alt="" />
           </div>
         </div>
       </div>
 
-      {openPopup && <PropertySearchPopup ref={popupRef} />}
+      {openPopup && (
+        <PropertySearchPopup
+          setOpenPopup={setOpenPopup}
+          formData={formData}
+          setFormData={setFormData}
+          func={handleSearch}
+        />
+      )}
     </>
   )
 }

@@ -4,12 +4,12 @@ import commonImage from '@/assets/common-side.PNG'
 
 const PropertyOfferComponent = ({ offerId }) => {
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto my-10 px-5">
       <div className="flex justify-between gap-10">
         <div className="w-[55rem]">
           <div className="flex flex-col items-center justify-start">
             <CustomHeading firstText={'Property Offers'} />
-            <p className="text-sm text-slate-500 mb-14">
+            <p className="text-sm text-slate-500 mb-5 md:mb-14">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
               doloribus magni voluptatum
             </p>
@@ -24,7 +24,7 @@ const PropertyOfferComponent = ({ offerId }) => {
                 {offerId === '2' ? 'Eid Discount' : 'Discount'}
               </h1>
 
-              <p className="text-sm text-gray-600 px-16 text-justify pb-8">
+              <p className="text-sm text-gray-600 px-5 md:px-16 text-justify pb-8">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Repellendus, dolorem inventore nobis eligendi molestias dolorum
                 necessitatibus alias voluptatem enim autem, quia optio hic quae
@@ -43,7 +43,7 @@ const PropertyOfferComponent = ({ offerId }) => {
           </div>
         </div>
 
-        <div className="max-w-[30rem]">
+        <div className="max-w-[30rem] hidden md:flex">
           <img src={commonImage.src} className="w-full" alt="" />
         </div>
       </div>

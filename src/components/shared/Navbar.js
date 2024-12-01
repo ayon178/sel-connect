@@ -8,30 +8,38 @@ import Link from 'next/link'
 import Image from 'next/image'
 import logo from '../../assets/logo.png'
 
+import { FiMenu as Icon } from 'react-icons/fi'
+
 import { FaUserCircle } from 'react-icons/fa'
 import { HiDotsVertical } from 'react-icons/hi'
 
-const Navbar = () => {
+const Navbar = ({ setter }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const refMobile = useRef(null)
   const [authenticated, setAuthenticated] = useState(false)
+  const [user, setUser] = useState({})
 
   useEffect(() => {
-    gsap.from(refMobile.current, {
-      xPercent: -100,
-    })
-
     if (typeof window !== 'undefined') {
-      const auth = window.localStorage.getItem('isAuthenticated')
+      const auth = window.localStorage.getItem('selConnect')
       if (!auth) {
-        window.location.href = '/auth/login'
+        // window.location.href = '/auth/login'
         return
       } else {
         setAuthenticated(true)
+        if (auth) {
+          const parsed = JSON.parse(auth)
+          setUser(parsed)
+        }
       }
     }
+
+    // Hide the mobile menu at the first load
+    gsap.set(refMobile.current, { xPercent: -130 })
   }, [])
 
   const openMenu = () => {
+    setIsMenuOpen(true)
     gsap.to(refMobile.current, {
       xPercent: 0,
       duration: 1.2,
@@ -39,12 +47,13 @@ const Navbar = () => {
     })
   }
 
-  const closeMenu = () => {
-    gsap.to(refMobile.current, {
+  const closeMenu = async () => {
+    await gsap.to(refMobile.current, {
       xPercent: -100,
       duration: 1.2,
       ease: 'power2.out',
     })
+    setIsMenuOpen(false)
   }
 
   const handleMenuItemHover = event => {
@@ -70,25 +79,8 @@ const Navbar = () => {
       id="navbar"
       className="bg-primary shadow-md z-50 p-2 sticky top-0 w-screen"
     >
-      <div className="z-50 container  px-4 md:px-10 py-0 mx-auto flex flex-row justify-between">
+      <div className="z-50   px-4 md:px-10 py-0 mx-auto flex flex-row justify-between">
         <Link href="/#" className="font-semibold text-2xl flex items-center">
-          {/* <FaHospitalAlt className="text-4xl mr-2" />
-        <div className="flex flex-col">
-          <h1 className="inline-block text-[.6rem] font-extrabold">
-            The Royal
-          </h1>
-          <h1 className="inline-block text-[.6rem] -my-5 font-extrabold">
-            Melbourne
-          </h1>
-          <h1 className="inline-block text-[.6rem] font-extrabold">Hospital</h1>
-        </div> */}
-          {/* <Image
-            src={logo}
-            alt="Royal Melbourne Hospital"
-            width={40}
-            height={40}
-            className="py-1"
-          /> */}
           <h1 className="text-2xl text_color text-secondaryText py-1 font-semibold">
             SEL Connect
           </h1>
@@ -105,7 +97,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              href="/search"
+              href="/user/search"
               onMouseEnter={handleMenuItemHover}
               onMouseLeave={handleMenuItemLeave}
             >
@@ -114,7 +106,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              href="/offer"
+              href="/user/offer"
               onMouseEnter={handleMenuItemHover}
               onMouseLeave={handleMenuItemLeave}
             >
@@ -123,7 +115,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              href="/notification"
+              href="/user/notification"
               onMouseEnter={handleMenuItemHover}
               onMouseLeave={handleMenuItemLeave}
             >
@@ -132,7 +124,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              href="/event"
+              href="/user/event"
               onMouseEnter={handleMenuItemHover}
               onMouseLeave={handleMenuItemLeave}
             >
@@ -141,7 +133,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              href="/interior-design"
+              href="/user/interior-design"
               onMouseEnter={handleMenuItemHover}
               onMouseLeave={handleMenuItemLeave}
             >
@@ -169,7 +161,7 @@ const Navbar = () => {
           onClick={openMenu}
         />
 
-        <MobileMenu ref={refMobile} closeMenu={closeMenu} />
+        <MobileMenu ref={refMobile} closeMenu={closeMenu} isOpen={isMenuOpen} />
       </div>
     </div>
   )

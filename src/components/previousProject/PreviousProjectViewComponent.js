@@ -5,17 +5,17 @@ import commonImage from '@/assets/common-side.PNG'
 // image import
 import imageOne from '../../assets/previous_project/1.jpg'
 import imageTwo from '../../assets/previous_project/2.jpg'
-import imageThree from '../../assets/previous_project/3.jpg'
-import imageFour from '../../assets/previous_project/4.jpg'
+import imageThree from '../../assets/previous_project/3.png'
+import imageFour from '../../assets/previous_project/4.png'
 
 const PreviousProjectViewComponent = ({ id }) => {
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto my-10 px-5">
       <div className="flex justify-between gap-10">
         <div className="w-[55rem]">
           <div className="flex flex-col items-center justify-start">
             <CustomHeading firstText={'Previous Project'} />
-            <p className="text-sm mb-8">
+            <p className="text-sm mb-8 text-center sm:text-justify">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
               doloribus magni voluptatum
             </p>
@@ -62,7 +62,7 @@ const PreviousProjectViewComponent = ({ id }) => {
           </div>
         </div>
 
-        <div className="max-w-[30rem]">
+        <div className="max-w-[30rem] hidden md:flex">
           <img src={commonImage.src} className="w-full" alt="" />
         </div>
       </div>
