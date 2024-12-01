@@ -61,11 +61,6 @@ export const getSidebarOptions = (role, sub) => {
       path: '/admin/sales/property-list',
       icon: <IoMdList />,
     },
-    // {
-    //   title: 'Profile',
-    //   path: '/admin/sales/profile',
-    //   icon: <CgProfile />,
-    // },
     {
       title: 'HR Notification',
       path: '/admin/sales/hr-notification',
